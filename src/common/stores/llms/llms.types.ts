@@ -25,6 +25,7 @@ export interface DLLM {
   label: string;
   created: number | 0;
   updated?: number | 0;
+  pubDate?: string; // official release date in 'YYYYMMDD'
   description: string;
   hidden: boolean;
 
