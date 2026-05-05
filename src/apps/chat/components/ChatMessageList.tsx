@@ -6,6 +6,7 @@ import { Box, List } from '@mui/joy';
 
 import type { SystemPurposeExample } from '../../../data';
 
+import type { AixReattachMode } from '~/modules/aix/client/aix.client';
 import type { DiagramConfig } from '~/modules/aifn/digrams/DiagramsModal';
 import { speakText } from '~/modules/speex/speex.client';
 
@@ -123,7 +124,7 @@ export function ChatMessageList(props: {
     }
   }, [conversationHandler, conversationId, onConversationExecuteHistory]);
 
-  const handleMessageUpstreamResume = React.useCallback(async (generator: DMessageGenerator, messageId: DMessageId) => {
+  const handleMessageUpstreamResume = React.useCallback(async (generator: DMessageGenerator, messageId: DMessageId, mode: AixReattachMode) => {
     if (!conversationId || !conversationHandler) return;
     if (!generator.upstreamHandle) throw new Error('No upstream handle on generator');
 
@@ -136,6 +137,7 @@ export function ChatMessageList(props: {
       llmId,
       generator,
       aixCreateChatGenerateContext('conversation', conversationId),
+      mode,
       { abortSignal: 'NON_ABORTABLE', throttleParallelThreads: 0 },
       async (update, isDone) => {
         conversationHandler.messageEdit(messageId, {

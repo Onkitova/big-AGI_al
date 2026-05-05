@@ -29,6 +29,7 @@ import VerticalAlignBottomIcon from '@mui/icons-material/VerticalAlignBottom';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 
+import type { AixReattachMode } from '~/modules/aix/client/aix.client';
 import { ModelVendorAnthropic } from '~/modules/llms/vendors/anthropic/anthropic.vendor';
 
 import { AnthropicIcon } from '~/common/components/icons/vendors/AnthropicIcon';
@@ -161,7 +162,7 @@ export function ChatMessage(props: {
   onMessageBeam?: (messageId: string) => Promise<void>,
   onMessageBranch?: (messageId: string) => void,
   onMessageContinue?: (messageId: string, continueText: null | string) => void,
-  onMessageUpstreamResume?: (generator: DMessageGenerator, messageId: string) => Promise<void>,
+  onMessageUpstreamResume?: (generator: DMessageGenerator, messageId: string, mode: AixReattachMode) => Promise<void>,
   onMessageUpstreamDelete?: (generator: DMessageGenerator, messageId: string) => Promise<void>,
   onMessageDelete?: (messageId: string) => void,
   onMessageFragmentAppend?: (messageId: DMessageId, fragment: DMessageFragment) => void
@@ -265,9 +266,9 @@ export function ChatMessage(props: {
     onMessageContinue?.(messageId, continueText);
   }, [messageId, onMessageContinue]);
 
-  const handleUpstreamResume = React.useCallback(() => {
+  const handleUpstreamResume = React.useCallback((mode: AixReattachMode) => {
     if (!messageGenerator) return;
-    return onMessageUpstreamResume?.(messageGenerator, messageId);
+    return onMessageUpstreamResume?.(messageGenerator, messageId, mode);
   }, [messageGenerator, messageId, onMessageUpstreamResume]);
 
   const handleUpstreamDelete = React.useCallback(() => {
