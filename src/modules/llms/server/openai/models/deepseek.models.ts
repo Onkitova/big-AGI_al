@@ -20,6 +20,7 @@ const _knownDeepseekChatModels: ManualMappings = [
   {
     idPrefix: 'deepseek-v4-pro',
     label: 'DeepSeek V4 Pro',
+    pubDate: '20260424',
     description: 'Premium reasoning model with 1M context. Supports extended thinking modes, JSON output, and function calling.',
     contextWindow: 1_048_576, // 1M
     interfaces: [...IF_4, LLM_IF_OAI_Reasoning],
@@ -33,6 +34,7 @@ const _knownDeepseekChatModels: ManualMappings = [
   {
     idPrefix: 'deepseek-v4-flash',
     label: 'DeepSeek V4 Flash',
+    pubDate: '20260424',
     description: 'Fast general-purpose model with 1M context. Supports extended thinking modes, JSON output, and function calling.',
     contextWindow: 1_048_576, // 1M
     interfaces: [...IF_4, LLM_IF_OAI_Reasoning],

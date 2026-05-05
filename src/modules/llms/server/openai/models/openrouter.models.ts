@@ -162,8 +162,11 @@ export function openRouterModelToModelDescription(wireModel: object): ModelDescr
   // -- Vendor parameter & interface inheritance --
   const llmRef = model.id.replace(/^[^/]+\//, '');
   let initialTemperature: number | undefined;
+  let pubDate: string | undefined;
 
   const _mergeLookup = (lookup: OrtVendorLookupResult | undefined) => {
+    if (lookup?.pubDate !== undefined)
+      pubDate = lookup.pubDate;
     if (lookup?.interfaces)
       for (const iface of lookup.interfaces)
         if (!interfaces.includes(iface))
@@ -270,6 +273,7 @@ export function openRouterModelToModelDescription(wireModel: object): ModelDescr
     idPrefix: model.id,
     // latest: ...
     label,
+    ...(pubDate !== undefined && { pubDate }),
     description: model.description?.length > 280 ? model.description.slice(0, 277) + '...' : model.description,
     contextWindow,
     maxCompletionTokens,

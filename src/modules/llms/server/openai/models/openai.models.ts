@@ -111,6 +111,7 @@ export const _knownOpenAIChatModels: ManualMappings = [
   {
     idPrefix: 'gpt-5.5-2026-04-23',
     label: 'GPT-5.5 (2026-04-23)',
+    pubDate: '20260423',
     description: 'New baseline for complex production workflows. Stronger task execution, more precise tool use, more efficient reasoning with fewer tokens. 1M token context.',
     contextWindow: 1050000,
     maxCompletionTokens: 128000,
@@ -136,6 +137,7 @@ export const _knownOpenAIChatModels: ManualMappings = [
   {
     idPrefix: 'gpt-5.5-pro-2026-04-23',
     label: 'GPT-5.5 Pro (2026-04-23)',
+    pubDate: '20260423',
     description: 'Most capable model for complex tasks. Uses more compute for smarter, more precise responses on the hardest problems.',
     contextWindow: 1050000,
     maxCompletionTokens: 272000,
@@ -163,6 +165,7 @@ export const _knownOpenAIChatModels: ManualMappings = [
   {
     idPrefix: 'gpt-5.4-2026-03-05',
     label: 'GPT-5.4 (2026-03-05)',
+    pubDate: '20260305',
     description: 'Most capable and efficient frontier model for professional work. Native computer use, improved reasoning, coding, and agentic workflows with 1M token context.',
     contextWindow: 1050000,
     maxCompletionTokens: 128000,
@@ -188,6 +191,7 @@ export const _knownOpenAIChatModels: ManualMappings = [
   {
     idPrefix: 'gpt-5.4-pro-2026-03-05',
     label: 'GPT-5.4 Pro (2026-03-05)',
+    pubDate: '20260305',
     description: 'Most capable model for complex tasks. Uses more compute for smarter, more precise responses on difficult problems.',
     contextWindow: 1050000,
     maxCompletionTokens: 272000,
@@ -212,6 +216,7 @@ export const _knownOpenAIChatModels: ManualMappings = [
   {
     idPrefix: 'gpt-5.4-mini-2026-03-17',
     label: 'GPT-5.4 Mini (2026-03-17)',
+    pubDate: '20260317',
     description: 'Strongest mini model for coding, computer use, and subagents. GPT-5.4-class intelligence at lower cost and latency.',
     contextWindow: 400000,
     maxCompletionTokens: 128000,
@@ -237,6 +242,7 @@ export const _knownOpenAIChatModels: ManualMappings = [
   {
     idPrefix: 'gpt-5.4-nano-2026-03-17',
     label: 'GPT-5.4 Nano (2026-03-17)',
+    pubDate: '20260317',
     description: 'Cheapest GPT-5.4-class model for simple high-volume tasks like classification and data extraction.',
     contextWindow: 400000,
     maxCompletionTokens: 128000,
@@ -265,6 +271,7 @@ export const _knownOpenAIChatModels: ManualMappings = [
   {
     idPrefix: 'gpt-5.3-codex',
     label: 'GPT-5.3 Codex',
+    pubDate: '20260205',
     description: 'Most capable agentic coding model. Combines frontier coding performance of GPT-5.2-Codex with reasoning and professional knowledge of GPT-5.2. ~25% faster.',
     contextWindow: 400000,
     maxCompletionTokens: 128000,
@@ -285,6 +292,7 @@ export const _knownOpenAIChatModels: ManualMappings = [
     hidden: true, // Research preview, ChatGPT Pro only - API access limited to design partners
     idPrefix: 'gpt-5.3-codex-spark',
     label: 'GPT-5.3 Codex Spark',
+    pubDate: '20260212',
     description: 'Text-only research preview optimized for real-time coding iteration. Delivers 1000+ tokens/sec on low-latency hardware.',
     contextWindow: 128000,
     maxCompletionTokens: 16384,
@@ -297,10 +305,11 @@ export const _knownOpenAIChatModels: ManualMappings = [
     // benchmark: TBD
   },
 
-  // GPT-5.3 Chat Latest - Released March 4, 2026
+  // GPT-5.3 Chat Latest - Released March 3, 2026
   {
     idPrefix: 'gpt-5.3-chat-latest',
     label: 'GPT-5.3 Instant',
+    pubDate: '20260303',
     description: 'GPT-5.3 model powering ChatGPT. Points to the GPT-5.3 Instant snapshot currently used in ChatGPT.',
     contextWindow: 128000,
     maxCompletionTokens: 16384,
@@ -322,6 +331,7 @@ export const _knownOpenAIChatModels: ManualMappings = [
     hidden: true, // superseded by GPT-5.4/5.5
     idPrefix: 'gpt-5.2-2025-12-11',
     label: 'GPT-5.2 (2025-12-11)',
+    pubDate: '20251211',
     description: 'Most capable model for professional work and long-running agents. Improvements in general intelligence, long-context, agentic tool-calling, and vision.',
     contextWindow: 400000,
     maxCompletionTokens: 128000,
@@ -349,6 +359,7 @@ export const _knownOpenAIChatModels: ManualMappings = [
     hidden: true, // superseded by GPT-5.3 Codex
     idPrefix: 'gpt-5.2-codex',
     label: 'GPT-5.2 Codex',
+    pubDate: '20251211',
     description: 'GPT-5.2 optimized for long-horizon, agentic coding tasks in Codex or similar environments. Supports low, medium, high, and xhigh reasoning effort settings.',
     contextWindow: 400000,
     maxCompletionTokens: 128000,
@@ -368,6 +379,7 @@ export const _knownOpenAIChatModels: ManualMappings = [
     hidden: true, // superseded by GPT-5.3 Instant
     idPrefix: 'gpt-5.2-chat-latest',
     label: 'GPT-5.2 Instant',
+    pubDate: '20251211',
     description: 'GPT-5.2 model powering ChatGPT. Fast, capable for everyday work with clear improvements in info-seeking, how-tos, technical writing.',
     contextWindow: 128000,
     maxCompletionTokens: 16384,
@@ -387,6 +399,7 @@ export const _knownOpenAIChatModels: ManualMappings = [
     hidden: true, // superseded by GPT-5.4/5.5 Pro
     idPrefix: 'gpt-5.2-pro-2025-12-11',
     label: 'GPT-5.2 Pro (2025-12-11)',
+    pubDate: '20251211',
     description: 'Smartest and most trustworthy option for difficult questions. Uses more compute for harder thinking on complex domains like programming.',
     contextWindow: 400000,
     maxCompletionTokens: 272000,
@@ -416,6 +429,7 @@ export const _knownOpenAIChatModels: ManualMappings = [
     hidden: true, // superseded by GPT-5.4/5.5
     idPrefix: 'gpt-5.1-2025-11-13',
     label: 'GPT-5.1 (2025-11-13)',
+    pubDate: '20251113',
     description: 'The best model for coding and agentic tasks with configurable reasoning effort.',
     contextWindow: 400000,
     maxCompletionTokens: 128000,
@@ -442,6 +456,7 @@ export const _knownOpenAIChatModels: ManualMappings = [
     hidden: true, // superseded by GPT-5.3 Instant
     idPrefix: 'gpt-5.1-chat-latest',
     label: 'GPT-5.1 Instant',
+    pubDate: '20251112',
     description: 'GPT-5.1 Instant with adaptive reasoning. More conversational with improved instruction following.',
     contextWindow: 128000,
     maxCompletionTokens: 16384,
@@ -462,6 +477,7 @@ export const _knownOpenAIChatModels: ManualMappings = [
     hidden: true, // superseded by GPT-5.3 Codex
     idPrefix: 'gpt-5.1-codex-max',
     label: 'GPT-5.1 Codex Max',
+    pubDate: '20251119',
     description: 'Our most intelligent coding model optimized for long-horizon, agentic coding tasks.',
     contextWindow: 400000,
     maxCompletionTokens: 128000,
@@ -480,6 +496,7 @@ export const _knownOpenAIChatModels: ManualMappings = [
     hidden: true, // superseded by GPT-5.3 Codex
     idPrefix: 'gpt-5.1-codex',
     label: 'GPT-5.1 Codex',
+    pubDate: '20251113',
     description: 'A version of GPT-5.1 optimized for agentic coding tasks in Codex or similar environments.',
     contextWindow: 400000,
     maxCompletionTokens: 128000,
@@ -498,6 +515,7 @@ export const _knownOpenAIChatModels: ManualMappings = [
     hidden: true, // superseded by GPT-5.3 Codex
     idPrefix: 'gpt-5.1-codex-mini',
     label: 'GPT-5.1 Codex Mini',
+    pubDate: '20251113',
     description: 'Smaller, faster version of GPT-5.1 Codex for efficient coding tasks.',
     contextWindow: 400000,
     maxCompletionTokens: 128000,
@@ -520,6 +538,7 @@ export const _knownOpenAIChatModels: ManualMappings = [
     hidden: true, // superseded by GPT-5.4/5.5
     idPrefix: 'gpt-5-2025-08-07',
     label: 'GPT-5 (2025-08-07)',
+    pubDate: '20250807',
     description: 'The best model for coding and agentic tasks across domains.',
     contextWindow: 400000,
     maxCompletionTokens: 128000,
@@ -546,6 +565,7 @@ export const _knownOpenAIChatModels: ManualMappings = [
     hidden: true, // superseded by GPT-5.4/5.5 Pro
     idPrefix: 'gpt-5-pro-2025-10-06',
     label: 'GPT-5 Pro (2025-10-06)',
+    pubDate: '20251006',
     description: 'Version of GPT-5 that uses more compute to produce smarter and more precise responses. Designed for tough problems.',
     contextWindow: 400000,
     maxCompletionTokens: 272000,
@@ -566,6 +586,7 @@ export const _knownOpenAIChatModels: ManualMappings = [
     hidden: true, // deprecated per OpenAI docs (2026-04)
     idPrefix: 'gpt-5-chat-latest',
     label: 'GPT-5 ChatGPT (Non-Thinking)',
+    pubDate: '20250807',
     description: 'GPT-5 model used in ChatGPT. Points to the GPT-5 snapshot currently used in ChatGPT.',
     contextWindow: 128000,
     maxCompletionTokens: 16384,
@@ -580,6 +601,7 @@ export const _knownOpenAIChatModels: ManualMappings = [
     hidden: true, // deprecated per OpenAI docs (2026-04), superseded by gpt-5.1-codex/gpt-5.3-codex
     idPrefix: 'gpt-5-codex',
     label: 'GPT-5 Codex',
+    pubDate: '20250915',
     description: 'A version of GPT-5 optimized for agentic coding in Codex.',
     contextWindow: 400000,
     maxCompletionTokens: 128000,
@@ -599,6 +621,7 @@ export const _knownOpenAIChatModels: ManualMappings = [
     hidden: true, // poor quality - use llmVndOaiWebSearchContext on regular models instead
     idPrefix: 'gpt-5-search-api-2025-10-14',
     label: 'GPT-5 Search API (2025-10-14)',
+    pubDate: '20251014',
     description: 'Updated web search model in Chat Completions API. 60% cheaper with domain filtering support.',
     contextWindow: 400000,
     maxCompletionTokens: 100000,
@@ -619,6 +642,7 @@ export const _knownOpenAIChatModels: ManualMappings = [
     hidden: true, // superseded by GPT-5.4 Mini
     idPrefix: 'gpt-5-mini-2025-08-07',
     label: 'GPT-5 Mini (2025-08-07)',
+    pubDate: '20250807',
     description: 'A faster, more cost-efficient version of GPT-5 for well-defined tasks.',
     contextWindow: 400000,
     maxCompletionTokens: 128000,
@@ -639,6 +663,7 @@ export const _knownOpenAIChatModels: ManualMappings = [
     hidden: true, // superseded by GPT-5.4 Nano
     idPrefix: 'gpt-5-nano-2025-08-07',
     label: 'GPT-5 Nano (2025-08-07)',
+    pubDate: '20250807',
     description: 'Fastest, most cost-efficient version of GPT-5 for summarization and classification tasks.',
     contextWindow: 400000,
     maxCompletionTokens: 128000,
@@ -679,6 +704,7 @@ export const _knownOpenAIChatModels: ManualMappings = [
     hidden: true, // UNSUPPORTED YET
     idPrefix: 'computer-use-preview-2025-03-11',
     label: 'Computer Use Preview (2025-03-11)',
+    pubDate: '20250311',
     description: 'Specialized model for computer use tool. Optimized for computer interaction capabilities.',
     contextWindow: 8192,
     maxCompletionTokens: 1024,
@@ -700,6 +726,7 @@ export const _knownOpenAIChatModels: ManualMappings = [
   {
     idPrefix: 'o4-mini-deep-research-2025-06-26',
     label: 'o4 Mini Deep Research [Deprecated]',
+    pubDate: '20250626',
     isLegacy: true,
     description: 'Faster, more affordable deep research model for complex, multi-step research tasks. [Shutdown: 2026-07-23 - migrate to GPT-5.5 with web search.]',
     contextWindow: 200000,
@@ -718,6 +745,7 @@ export const _knownOpenAIChatModels: ManualMappings = [
   {
     idPrefix: 'o4-mini-2025-04-16',
     label: 'o4 Mini [Deprecated]',
+    pubDate: '20250416',
     isLegacy: true,
     description: 'Latest o4-mini model. Optimized for fast, effective reasoning with exceptionally efficient performance in coding and visual tasks. [Shutdown: 2026-10-23 - migrate to GPT-5.4 Mini.]',
     contextWindow: 200000,
@@ -737,6 +765,7 @@ export const _knownOpenAIChatModels: ManualMappings = [
   {
     idPrefix: 'o3-deep-research-2025-06-26',
     label: 'o3 Deep Research [Deprecated]',
+    pubDate: '20250626',
     isLegacy: true,
     description: 'Our most powerful deep research model for complex, multi-step research tasks. [Shutdown: 2026-07-23 - migrate to GPT-5.5 Pro with web search.]',
     contextWindow: 200000,
@@ -755,6 +784,7 @@ export const _knownOpenAIChatModels: ManualMappings = [
   {
     idPrefix: 'o3-pro-2025-06-10',
     label: 'o3 Pro (2025-06-10)',
+    pubDate: '20250610',
     description: 'Version of o3 with more compute for better responses. Provides consistently better answers for complex tasks.',
     contextWindow: 200000,
     maxCompletionTokens: 100000,
@@ -773,6 +803,7 @@ export const _knownOpenAIChatModels: ManualMappings = [
   {
     idPrefix: 'o3-2025-04-16',
     label: 'o3 (2025-04-16)',
+    pubDate: '20250416',
     description: 'A well-rounded and powerful model across domains. Sets a new standard for math, science, coding, and visual reasoning tasks.',
     contextWindow: 200000,
     maxCompletionTokens: 100000,
@@ -791,6 +822,7 @@ export const _knownOpenAIChatModels: ManualMappings = [
   {
     idPrefix: 'o3-mini-2025-01-31',
     label: 'o3 Mini [Deprecated]',
+    pubDate: '20250131',
     isLegacy: true,
     description: 'Latest o3-mini model snapshot. High intelligence at the same cost and latency targets of o1-mini. Excels at science, math, and coding tasks. [Shutdown: 2026-10-23 - migrate to GPT-5.4 Mini.]',
     contextWindow: 200000,
@@ -811,6 +843,7 @@ export const _knownOpenAIChatModels: ManualMappings = [
     hidden: true,
     idPrefix: 'o1-pro-2025-03-19',
     label: 'o1 Pro (2025-03-19)',
+    pubDate: '20250319',
     description: 'A version of o1 with more compute for better responses. Provides consistently better answers for complex tasks.',
     contextWindow: 200000,
     maxCompletionTokens: 100000,
@@ -829,6 +862,7 @@ export const _knownOpenAIChatModels: ManualMappings = [
   {
     idPrefix: 'o1-2024-12-17',
     label: 'o1 [Deprecated]',
+    pubDate: '20241217',
     isLegacy: true,
     description: 'Previous full o-series reasoning model. [Shutdown: 2026-10-23 - migrate to GPT-5.5 or o3.]',
     contextWindow: 200000,
@@ -851,6 +885,7 @@ export const _knownOpenAIChatModels: ManualMappings = [
   {
     idPrefix: 'gpt-4.1-2025-04-14',
     label: 'GPT-4.1 (2025-04-14)',
+    pubDate: '20250414',
     description: 'Flagship GPT model for complex tasks. Major improvements on coding, instruction following, and long context with 1M token context window.',
     contextWindow: 1047576,
     maxCompletionTokens: 32768,
@@ -868,6 +903,7 @@ export const _knownOpenAIChatModels: ManualMappings = [
   {
     idPrefix: 'gpt-4.1-mini-2025-04-14',
     label: 'GPT-4.1 Mini (2025-04-14)',
+    pubDate: '20250414',
     description: 'Balanced for intelligence, speed, and cost. Matches or exceeds GPT-4o in intelligence while reducing latency by nearly half and cost by 83%.',
     contextWindow: 1047576,
     maxCompletionTokens: 32768,
@@ -885,6 +921,7 @@ export const _knownOpenAIChatModels: ManualMappings = [
   {
     idPrefix: 'gpt-4.1-nano-2025-04-14',
     label: 'GPT-4.1 Nano [Deprecated]',
+    pubDate: '20250414',
     isLegacy: true,
     description: 'Fastest, most cost-effective GPT 4.1 model. Delivers exceptional performance with low latency, ideal for tasks like classification or autocompletion. [Shutdown: 2026-10-23 - migrate to GPT-5.4 Nano.]',
     contextWindow: 1047576,
@@ -906,6 +943,7 @@ export const _knownOpenAIChatModels: ManualMappings = [
   {
     idPrefix: 'gpt-audio-1.5',
     label: 'GPT Audio 1.5',
+    pubDate: '20260224',
     description: 'Best voice model for audio in, audio out with Chat Completions. Accepts audio inputs and outputs.',
     contextWindow: 128000,
     maxCompletionTokens: 16384,
@@ -919,6 +957,7 @@ export const _knownOpenAIChatModels: ManualMappings = [
     hidden: true, // superseded by GPT Audio 1.5
     idPrefix: 'gpt-audio-2025-08-28',
     label: 'GPT Audio (2025-08-28)',
+    pubDate: '20250828',
     description: 'First generally available audio model. Accepts audio inputs and outputs, and can be used in the Chat Completions REST API.',
     contextWindow: 128000,
     maxCompletionTokens: 16384,
@@ -935,6 +974,7 @@ export const _knownOpenAIChatModels: ManualMappings = [
   {
     idPrefix: 'gpt-audio-mini-2025-12-15',
     label: 'GPT Audio Mini (2025-12-15)',
+    pubDate: '20251215',
     description: 'Cost-efficient audio model. Accepts audio inputs and outputs via Chat Completions REST API.',
     contextWindow: 128000,
     maxCompletionTokens: 16384,
@@ -944,6 +984,7 @@ export const _knownOpenAIChatModels: ManualMappings = [
   {
     idPrefix: 'gpt-audio-mini-2025-10-06',
     label: 'GPT Audio Mini (2025-10-06)',
+    pubDate: '20251006',
     hidden: true, // previous version
     description: 'Cost-efficient audio model. Accepts audio inputs and outputs via Chat Completions REST API.',
     contextWindow: 128000,
@@ -966,6 +1007,7 @@ export const _knownOpenAIChatModels: ManualMappings = [
   {
     idPrefix: 'gpt-4o-2024-11-20',
     label: 'GPT-4o (2024-11-20)',
+    pubDate: '20241120',
     description: 'Snapshot of gpt-4o from November 20th, 2024.',
     contextWindow: 128000,
     maxCompletionTokens: 16384,
@@ -976,6 +1018,7 @@ export const _knownOpenAIChatModels: ManualMappings = [
   {
     idPrefix: 'gpt-4o-2024-08-06',
     label: 'GPT-4o (2024-08-06)',
+    pubDate: '20240806',
     hidden: true, // previous version
     description: 'Snapshot that supports Structured Outputs. gpt-4o currently points to this version.',
     contextWindow: 128000,
@@ -987,6 +1030,7 @@ export const _knownOpenAIChatModels: ManualMappings = [
   {
     idPrefix: 'gpt-4o-2024-05-13',
     label: 'GPT-4o (2024-05-13)',
+    pubDate: '20240513',
     hidden: true, // previous version
     description: 'Original gpt-4o snapshot from May 13, 2024.',
     contextWindow: 128000,
@@ -1007,6 +1051,7 @@ export const _knownOpenAIChatModels: ManualMappings = [
     hidden: true, // old
     idPrefix: 'gpt-4o-search-preview-2025-03-11',
     label: 'GPT-4o Search Preview (2025-03-11)',
+    pubDate: '20250311',
     description: 'Latest snapshot of the GPT-4o model optimized for web search capabilities.',
     contextWindow: 128000,
     maxCompletionTokens: 16384,
@@ -1027,6 +1072,7 @@ export const _knownOpenAIChatModels: ManualMappings = [
     hidden: true, // old
     idPrefix: 'gpt-4o-audio-preview-2025-06-03',
     label: 'GPT-4o Audio Preview (2025-06-03)',
+    pubDate: '20250603',
     description: 'Latest snapshot for the Audio API model.',
     contextWindow: 128000,
     maxCompletionTokens: 16384,
@@ -1039,6 +1085,7 @@ export const _knownOpenAIChatModels: ManualMappings = [
     hidden: true, // old
     idPrefix: 'gpt-4o-audio-preview-2024-12-17',
     label: 'GPT-4o Audio Preview (2024-12-17)',
+    pubDate: '20241217',
     description: 'Snapshot for the Audio API model.',
     contextWindow: 128000,
     maxCompletionTokens: 16384,
@@ -1057,6 +1104,7 @@ export const _knownOpenAIChatModels: ManualMappings = [
   {
     idPrefix: 'gpt-4o-mini-2024-07-18',
     label: 'GPT-4o Mini (2024-07-18)',
+    pubDate: '20240718',
     description: 'Affordable model for fast, lightweight tasks. GPT-4o Mini is cheaper and more capable than GPT-3.5 Turbo.',
     contextWindow: 128000,
     maxCompletionTokens: 16384,
@@ -1073,6 +1121,7 @@ export const _knownOpenAIChatModels: ManualMappings = [
     hidden: true, // UNSUPPORTED yet (audio output model)
     idPrefix: 'gpt-4o-mini-audio-preview-2024-12-17',
     label: 'GPT-4o Mini Audio Preview (2024-12-17)',
+    pubDate: '20241217',
     description: 'Snapshot for the Audio API model.',
     contextWindow: 128000,
     maxCompletionTokens: 16384,
@@ -1091,6 +1140,7 @@ export const _knownOpenAIChatModels: ManualMappings = [
     hidden: true, // old
     idPrefix: 'gpt-4o-mini-search-preview-2025-03-11',
     label: 'GPT-4o Mini Search Preview (2025-03-11)',
+    pubDate: '20250311',
     description: 'Latest snapshot of the GPT-4o Mini model optimized for web search capabilities.',
     contextWindow: 128000,
     maxCompletionTokens: 16384,
@@ -1110,6 +1160,7 @@ export const _knownOpenAIChatModels: ManualMappings = [
   {
     idPrefix: 'gpt-4-turbo-2024-04-09',
     label: 'GPT-4 Turbo (2024-04-09)',
+    pubDate: '20240409',
     hidden: true, // OLD
     description: 'GPT-4 Turbo with Vision model. Vision requests can now use JSON mode and function calling. gpt-4-turbo currently points to this version.',
     contextWindow: 128000,
@@ -1126,6 +1177,7 @@ export const _knownOpenAIChatModels: ManualMappings = [
   {
     idPrefix: 'gpt-4-0125-preview',
     label: 'GPT-4 Turbo (0125)',
+    pubDate: '20240125',
     hidden: true, // OLD
     description: 'GPT-4 Turbo preview model intended to reduce cases of "laziness" where the model doesn\'t complete a task.',
     contextWindow: 128000,
@@ -1137,6 +1189,7 @@ export const _knownOpenAIChatModels: ManualMappings = [
   {
     idPrefix: 'gpt-4-1106-preview', // GPT-4 Turbo preview model
     label: 'GPT-4 Turbo (1106)',
+    pubDate: '20231106',
     hidden: true, // OLD
     description: 'GPT-4 Turbo preview model featuring improved instruction following, JSON mode, reproducible outputs, parallel function calling, and more.',
     contextWindow: 128000,
@@ -1156,6 +1209,7 @@ export const _knownOpenAIChatModels: ManualMappings = [
   {
     idPrefix: 'gpt-4-0613',
     label: 'GPT-4 (0613)',
+    pubDate: '20230613',
     hidden: true, // OLD
     description: 'Snapshot of gpt-4 from June 13th 2023 with improved function calling support. Data up to Sep 2021.',
     contextWindow: 8192,
@@ -1167,6 +1221,7 @@ export const _knownOpenAIChatModels: ManualMappings = [
   {
     idPrefix: 'gpt-4-0314',
     label: 'GPT-4 (0314)',
+    pubDate: '20230314',
     hidden: true, // OLD
     description: 'Snapshot of gpt-4 from March 14th 2023 with function calling data. Data up to Sep 2021.',
     contextWindow: 8192,
@@ -1189,6 +1244,7 @@ export const _knownOpenAIChatModels: ManualMappings = [
   {
     idPrefix: 'gpt-3.5-turbo-0125',
     label: '3.5-Turbo (2024-01-25)',
+    pubDate: '20240125',
     hidden: true, // OLD
     description: 'The latest GPT-3.5 Turbo model with higher accuracy at responding in requested formats and a fix for a bug which caused a text encoding issue for non-English language function calls.',
     contextWindow: 16385,
@@ -1200,6 +1256,7 @@ export const _knownOpenAIChatModels: ManualMappings = [
   {
     idPrefix: 'gpt-3.5-turbo-1106',
     label: '3.5-Turbo (1106)',
+    pubDate: '20231106',
     hidden: true, // OLD
     description: 'GPT-3.5 Turbo model with improved instruction following, JSON mode, reproducible outputs, parallel function calling, and more.',
     contextWindow: 16385,
@@ -1559,5 +1616,5 @@ export function llmOrtOaiLookup(orModelName: string): OrtVendorLookupResult | un
 
   // initialTemperature: not set - OpenAI models use the global fallback (0.5);
   // NoTemperature models are handled client-side via LLM_IF_HOTFIX_NoTemperature (not propagated to OR)
-  return { interfaces, parameterSpecs };
+  return { interfaces, parameterSpecs, pubDate: entry.pubDate };
 }

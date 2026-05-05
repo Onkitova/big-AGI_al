@@ -6,7 +6,7 @@ import { Release } from '~/common/app.release';
 
 import type { ModelDescriptionSchema, OrtVendorLookupResult } from '../llm.server.types';
 import { createVariantInjector, ModelVariantMap } from '../llm.server.variants';
-import { llmDevCheckModels_DEV } from '../models.mappings';
+import { formatPubDate, llmDevCheckModels_DEV } from '../models.mappings';
 
 
 // dev options
@@ -186,7 +186,7 @@ const _knownGeminiModels: ({
   symLink?: string,
   deprecated?: string, // Gemini may provide deprecation dates
   // _delete removed - models are now physically removed from the list instead of marked for deletion
-} & Pick<ModelDescriptionSchema, 'interfaces' | 'parameterSpecs' | 'chatPrice' | 'hidden' | 'benchmark'>)[] = [
+} & Pick<ModelDescriptionSchema, 'pubDate' | 'interfaces' | 'parameterSpecs' | 'chatPrice' | 'hidden' | 'benchmark'> & { pubDate: string /* make it required */})[] = [
 
   /// Generation 3.1
 
@@ -195,6 +195,7 @@ const _knownGeminiModels: ({
   {
     id: 'models/gemini-3.1-pro-preview',
     labelOverride: 'Gemini 3.1 Pro Preview',
+    pubDate: '20260219',
     isPreview: true,
     chatPrice: gemini30ProPricing, // same pricing as 3 Pro
     interfaces: IF_30,
@@ -213,6 +214,7 @@ const _knownGeminiModels: ({
     hidden: true, // specialized variant for custom tool prioritization
     id: 'models/gemini-3.1-pro-preview-customtools',
     labelOverride: 'Gemini 3.1 Pro Preview (Custom Tools)',
+    pubDate: '20260219',
     isPreview: true,
     chatPrice: gemini30ProPricing,
     interfaces: IF_30,
@@ -230,6 +232,7 @@ const _knownGeminiModels: ({
   {
     id: 'models/gemini-3.1-flash-image-preview',
     labelOverride: 'Nano Banana 2',
+    pubDate: '20260226',
     isPreview: true,
     chatPrice: gemini31FlashImagePricing,
     interfaces: IF_30,
@@ -247,6 +250,7 @@ const _knownGeminiModels: ({
   {
     id: 'models/gemini-3.1-flash-lite-preview',
     labelOverride: 'Gemini 3.1 Flash-Lite Preview',
+    pubDate: '20260303',
     isPreview: true,
     chatPrice: gemini31FlashLitePricing,
     interfaces: IF_30,
@@ -268,6 +272,7 @@ const _knownGeminiModels: ({
     hidden: true, // March 9, 2026: API silently routes 'gemini-3-pro-preview' to 'gemini-3.1-pro-preview' - hide to prevent user confusion
     id: 'models/gemini-3-pro-preview',
     labelOverride: 'Gemini 3 Pro Preview',
+    pubDate: '20251118',
     isPreview: true,
     deprecated: '2026-03-09',
     chatPrice: gemini30ProPricing,
@@ -286,6 +291,7 @@ const _knownGeminiModels: ({
   {
     id: 'models/gemini-3-pro-image-preview',
     labelOverride: 'Nano Banana Pro', // Marketing name for the technical model ID
+    pubDate: '20251120',
     isPreview: true,
     chatPrice: gemini30ProImagePricing,
     interfaces: IF_30,
@@ -301,6 +307,7 @@ const _knownGeminiModels: ({
   {
     id: 'models/nano-banana-pro-preview',
     labelOverride: 'Nano Banana Pro',
+    pubDate: '20251120',
     symLink: 'models/gemini-3-pro-image-preview',
     // copied from symlink
     isPreview: true,
@@ -320,6 +327,7 @@ const _knownGeminiModels: ({
   {
     id: 'models/gemini-3-flash-preview',
     labelOverride: 'Gemini 3 Flash Preview',
+    pubDate: '20251217',
     isPreview: true,
     chatPrice: gemini30FlashPricing,
     interfaces: IF_30,
@@ -340,6 +348,7 @@ const _knownGeminiModels: ({
     hidden: true, // outperformed by 3.1 Pro (1493) and even 3 Flash (1474) - deprecated in 2 months
     id: 'models/gemini-2.5-pro',
     labelOverride: 'Gemini 2.5 Pro',
+    pubDate: '20250617',
     deprecated: '2026-06-17',
     chatPrice: gemini25ProPricing,
     interfaces: IF_25,
@@ -362,6 +371,7 @@ const _knownGeminiModels: ({
   {
     hidden: true, // single-turn-only model - unhide and just send a message to make use of this
     id: 'models/gemini-2.5-pro-preview-tts',
+    pubDate: '20250520',
     isPreview: true,
     chatPrice: gemini25ProPreviewTTSPricing,
     interfaces: [
@@ -379,6 +389,7 @@ const _knownGeminiModels: ({
   {
     id: 'models/deep-research-preview-04-2026',
     labelOverride: 'Deep Research Preview (2026-04)',
+    pubDate: '20260421',
     isPreview: true,
     chatPrice: gemini25ProPricing, // pricing not explicitly listed; using 2.5 Pro as baseline
     interfaces: [LLM_IF_OAI_Chat, LLM_IF_OAI_Vision, LLM_IF_OAI_Reasoning, LLM_IF_GEM_Interactions],
@@ -391,6 +402,7 @@ const _knownGeminiModels: ({
   {
     id: 'models/deep-research-max-preview-04-2026',
     labelOverride: 'Deep Research Max Preview (2026-04)',
+    pubDate: '20260421',
     isPreview: true,
     chatPrice: gemini25ProPricing, // baseline estimate (see note above)
     interfaces: [LLM_IF_OAI_Chat, LLM_IF_OAI_Vision, LLM_IF_OAI_Reasoning, LLM_IF_GEM_Interactions],
@@ -403,6 +415,7 @@ const _knownGeminiModels: ({
     hidden: true, // yield to newer 2026-04 models
     id: 'models/deep-research-pro-preview-12-2025',
     labelOverride: 'Deep Research Pro Preview',
+    pubDate: '20251211',
     isPreview: true,
     chatPrice: gemini25ProPricing,
     interfaces: [LLM_IF_OAI_Chat, LLM_IF_OAI_Vision, LLM_IF_OAI_Reasoning, LLM_IF_GEM_Interactions],
@@ -418,6 +431,7 @@ const _knownGeminiModels: ({
     hidden: true, // outperformed by 3 Flash Preview (1474 vs 1411) - deprecated in 2 months
     id: 'models/gemini-2.5-flash',
     labelOverride: 'Gemini 2.5 Flash',
+    pubDate: '20250617',
     deprecated: '2026-06-17',
     chatPrice: gemini25FlashPricing,
     interfaces: IF_25,
@@ -445,6 +459,7 @@ const _knownGeminiModels: ({
   {
     id: 'models/gemini-2.5-computer-use-preview-10-2025',
     labelOverride: 'Gemini 2.5 Computer Use Preview 10-2025',
+    pubDate: '20251007',
     isPreview: true,
     chatPrice: gemini25ProPricing, // Uses same pricing as 2.5 Pro (pricing page doesn't list separately)
     // NOTE: sweep shows fn=['auto'] only (no 'roundtrip') - partial Fn capability, do not advertise LLM_IF_OAI_Fn
@@ -462,6 +477,7 @@ const _knownGeminiModels: ({
   {
     id: 'models/gemini-robotics-er-1.6-preview',
     labelOverride: 'Gemini Robotics-ER 1.6 Preview',
+    pubDate: '20260414',
     isPreview: true,
     chatPrice: geminiRoboticsER16Pricing,
     interfaces: [LLM_IF_OAI_Chat, LLM_IF_OAI_Vision, LLM_IF_OAI_Fn, LLM_IF_OAI_Reasoning],
@@ -474,6 +490,7 @@ const _knownGeminiModels: ({
     hidden: true, // superseded by Robotics-ER 1.6 - shutdown April 30, 2026
     id: 'models/gemini-robotics-er-1.5-preview',
     labelOverride: 'Gemini Robotics-ER 1.5 Preview',
+    pubDate: '20250925',
     isPreview: true,
     deprecated: '2026-04-30',
     chatPrice: gemini25FlashPricing, // Uses same pricing as 2.5 Flash per pricing page
@@ -486,6 +503,7 @@ const _knownGeminiModels: ({
   {
     id: 'models/gemini-2.5-flash-image',
     labelOverride: 'Nano Banana',
+    pubDate: '20251002',
     deprecated: '2026-10-02',
     chatPrice: { input: 0.30, output: undefined }, // Per pricing page: $0.30 text/image input, $0.039 per image output, but the text output is not stated
     interfaces: [LLM_IF_OAI_Chat, LLM_IF_OAI_Vision],
@@ -506,6 +524,7 @@ const _knownGeminiModels: ({
     hidden: true, // audio outputs are unavailable
     id: 'models/gemini-3.1-flash-tts-preview',
     labelOverride: 'Gemini 3.1 Flash TTS Preview',
+    pubDate: '20260415',
     isPreview: true,
     chatPrice: gemini31FlashTTSPricing,
     interfaces: [
@@ -521,6 +540,7 @@ const _knownGeminiModels: ({
   {
     hidden: true, // audio outputs are unavailable as of 2025-05-27
     id: 'models/gemini-2.5-flash-preview-tts',
+    pubDate: '20250520',
     isPreview: true,
     chatPrice: gemini25FlashPreviewTTSPricing,
     interfaces: [
@@ -548,6 +568,7 @@ const _knownGeminiModels: ({
   {
     id: 'models/gemini-2.5-flash-lite',
     labelOverride: 'Gemini 2.5 Flash-Lite',
+    pubDate: '20250722',
     deprecated: '2026-07-22',
     chatPrice: gemini25FlashLitePricing,
     interfaces: IF_25,
@@ -580,6 +601,7 @@ const _knownGeminiModels: ({
   {
     hidden: true, // outclassed by all Flash models in 2.5/3.x series - shutdown in ~5 weeks
     id: 'models/gemini-2.0-flash-001',
+    pubDate: '20250205',
     deprecated: '2026-06-01',
     chatPrice: gemini20FlashPricing,
     interfaces: [LLM_IF_OAI_Chat, LLM_IF_OAI_Vision, LLM_IF_OAI_Fn, LLM_IF_GEM_CodeExecution],
@@ -588,6 +610,7 @@ const _knownGeminiModels: ({
   {
     hidden: true, // outclassed by all Flash models in 2.5/3.x series - shutdown in ~5 weeks
     id: 'models/gemini-2.0-flash',
+    pubDate: '20250205',
     symLink: 'models/gemini-2.0-flash-001',
     deprecated: '2026-06-01',
     // copied from symlink
@@ -600,6 +623,7 @@ const _knownGeminiModels: ({
   {
     hidden: true, // outclassed by 2.5/3.1 Flash-Lite - shutdown in ~5 weeks
     id: 'models/gemini-2.0-flash-lite',
+    pubDate: '20250225',
     chatPrice: gemini20FlashLitePricing,
     symLink: 'models/gemini-2.0-flash-lite-001',
     deprecated: '2026-06-01',
@@ -609,6 +633,7 @@ const _knownGeminiModels: ({
   {
     hidden: true, // outclassed by 2.5/3.1 Flash-Lite - shutdown in ~5 weeks
     id: 'models/gemini-2.0-flash-lite-001',
+    pubDate: '20250225',
     chatPrice: gemini20FlashLitePricing,
     deprecated: '2026-06-01',
     interfaces: [LLM_IF_OAI_Chat, LLM_IF_OAI_Vision, LLM_IF_OAI_Fn],
@@ -648,6 +673,7 @@ const _knownGeminiModels: ({
   // Gemma 4 Models - Released April 2, 2026
   {
     id: 'models/gemma-4-31b-it',
+    pubDate: '20260402',
     isPreview: true,
     interfaces: [LLM_IF_OAI_Chat, LLM_IF_OAI_Fn, LLM_IF_HOTFIX_StripImages, LLM_IF_HOTFIX_Sys0ToUsr0],
     parameterSpecs: [{ paramId: 'llmVndGemEffort', enumValues: ['minimal', 'high'] }],
@@ -657,6 +683,7 @@ const _knownGeminiModels: ({
   {
     hidden: true, // smaller MoE variant
     id: 'models/gemma-4-26b-a4b-it',
+    pubDate: '20260402',
     isPreview: true,
     interfaces: [LLM_IF_OAI_Chat, LLM_IF_OAI_Fn, LLM_IF_HOTFIX_StripImages, LLM_IF_HOTFIX_Sys0ToUsr0],
     parameterSpecs: [{ paramId: 'llmVndGemEffort', enumValues: ['minimal', 'high'] }],
@@ -667,6 +694,7 @@ const _knownGeminiModels: ({
   // Gemma 3n Model (newer than 3, first seen on the May 2025 update)
   {
     id: 'models/gemma-3n-e4b-it',
+    pubDate: '20250626',
     isPreview: true,
     interfaces: [LLM_IF_OAI_Chat, LLM_IF_HOTFIX_StripImages, LLM_IF_HOTFIX_Sys0ToUsr0],
     chatPrice: geminiExpFree, // Free tier only according to pricing page
@@ -674,6 +702,7 @@ const _knownGeminiModels: ({
   },
   {
     id: 'models/gemma-3n-e2b-it',
+    pubDate: '20250626',
     isPreview: true,
     interfaces: [LLM_IF_OAI_Chat, LLM_IF_HOTFIX_StripImages, LLM_IF_HOTFIX_Sys0ToUsr0],
     chatPrice: geminiExpFree, // Free tier only according to pricing page
@@ -685,6 +714,7 @@ const _knownGeminiModels: ({
   // - LLM_IF_HOTFIX_Sys0ToUsr0, because: "Developer instruction is not enabled for models/gemma-3-27b-it"
   {
     id: 'models/gemma-3-27b-it',
+    pubDate: '20250312',
     isPreview: true,
     interfaces: [LLM_IF_OAI_Chat, LLM_IF_HOTFIX_StripImages, LLM_IF_HOTFIX_Sys0ToUsr0],
     chatPrice: geminiExpFree, // Pricing page indicates free tier only
@@ -694,6 +724,7 @@ const _knownGeminiModels: ({
   {
     hidden: true, // keep larger model
     id: 'models/gemma-3-12b-it',
+    pubDate: '20250312',
     isPreview: true,
     interfaces: [LLM_IF_OAI_Chat, LLM_IF_HOTFIX_StripImages, LLM_IF_HOTFIX_Sys0ToUsr0],
     chatPrice: geminiExpFree,
@@ -702,6 +733,7 @@ const _knownGeminiModels: ({
   {
     hidden: true, // keep larger model
     id: 'models/gemma-3-4b-it',
+    pubDate: '20250312',
     isPreview: true,
     interfaces: [LLM_IF_OAI_Chat, LLM_IF_HOTFIX_StripImages, LLM_IF_HOTFIX_Sys0ToUsr0],
     chatPrice: geminiExpFree,
@@ -710,6 +742,7 @@ const _knownGeminiModels: ({
   {
     hidden: true, // keep larger model
     id: 'models/gemma-3-1b-it',
+    pubDate: '20250312',
     isPreview: true,
     interfaces: [LLM_IF_OAI_Chat, LLM_IF_HOTFIX_StripImages, LLM_IF_HOTFIX_Sys0ToUsr0],
     chatPrice: geminiExpFree,
@@ -948,6 +981,7 @@ export function geminiModelToModelDescription(geminiModel: GeminiWire_API_Models
     label: label,
     // created: ...
     // updated: ...
+    pubDate: knownModel?.pubDate ?? formatPubDate(), // 0-day fallback; the editorial entry is the source of truth; today's date is a placeholder until editorial catches up
     description: descriptionLong,
     contextWindow: contextWindow,
     maxCompletionTokens: outputTokenLimit,
@@ -1035,5 +1069,5 @@ export function llmOrtGemLookup(orModelName: string): OrtVendorLookupResult | un
     ?.filter(spec => _ORT_GEM_PARAM_ALLOWLIST.has(spec.paramId))
     .map(spec => ({ ...spec }));
 
-  return { interfaces, parameterSpecs, initialTemperature: GEMINI_DEFAULT_TEMPERATURE };
+  return { pubDate: knownModel.pubDate, interfaces, parameterSpecs, initialTemperature: GEMINI_DEFAULT_TEMPERATURE };
 }
