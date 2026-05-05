@@ -410,7 +410,7 @@ const _knownGeminiModels: ({
     benchmark: undefined, // Deep research model, not benchmarkable on standard tests
   },
 
-  // Deep Research Pro Preview - Released December 12, 2025
+  // Deep Research Pro Preview - Released December 11, 2025
   {
     hidden: true, // yield to newer 2026-04 models
     id: 'models/deep-research-pro-preview-12-2025',
