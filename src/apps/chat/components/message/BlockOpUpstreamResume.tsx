@@ -26,7 +26,6 @@ export function BlockOpUpstreamResume(props: {
   upstreamHandle: Exclude<DMessageGenerator['upstreamHandle'], undefined>,
   pending?: boolean; // true while the message is actively streaming; labels the Delete button as "Stop"
   onResume?: (mode: AixReattachMode) => void | Promise<void>;
-  onCancel?: () => void | Promise<void>;
   onDelete?: () => void | Promise<void>;
 }) {
 
@@ -63,18 +62,6 @@ export function BlockOpUpstreamResume(props: {
     }
   }, [props]);
 
-  const handleCancel = React.useCallback(async () => {
-    if (!props.onCancel) return;
-    setError(null);
-    setIsCancelling(true);
-    try {
-      await props.onCancel();
-    } catch (err: any) {
-      setError(err?.message || 'Cancel failed');
-    } finally {
-      setIsCancelling(false);
-    }
-  }, [props]);
 
   // Two-click arm: first click arms (visible red "Confirm?"), second click (within ARM_TIMEOUT_MS) executes.
   const handleDelete = React.useCallback(async () => {
@@ -146,19 +133,6 @@ export function BlockOpUpstreamResume(props: {
               onClick={() => handleResume('snapshot')}
             >
               Recover
-            </Button>
-          </Tooltip>
-        )}
-
-        {props.onCancel && (
-          <Tooltip title='Cancel the response generation'>
-            <Button
-              disabled={inFlightShort}
-              loading={isCancelling}
-              // startDecorator={<CancelIcon />}
-              onClick={handleCancel}
-            >
-              Cancel
             </Button>
           </Tooltip>
         )}
