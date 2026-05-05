@@ -151,6 +151,9 @@ export function createGeminiInteractionsParserSSE(requestedModelName: string | n
         if (!deltaParse.success) {
           // Empty deltas ({}) appear alongside placeholder blocks (e.g. internal tool slots) - silent skip
           if (event.delta && Object.keys(event.delta).length === 0) break;
+          // Known-but-not-surfaced delta types (mirrors NS parser's INTERNAL_OUTPUT_TYPES policy + spec's document/video variants we don't model) - silent skip
+          const deltaType = (event.delta as { type?: string })?.type;
+          if (deltaType && (GeminiInteractionsWire_API_Interactions.INTERNAL_OUTPUT_TYPES.has(deltaType) || deltaType === 'document' || deltaType === 'video')) break;
           console.warn('[GeminiInteractions] unknown content.delta shape at index', event.index, event.delta);
           break;
         }
