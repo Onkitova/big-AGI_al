@@ -163,7 +163,9 @@ export function ChatMessage(props: {
   onMessageBranch?: (messageId: string) => void,
   onMessageContinue?: (messageId: string, continueText: null | string) => void,
   onMessageUpstreamResume?: (generator: DMessageGenerator, messageId: string, mode: AixReattachMode) => Promise<void>,
+  onMessageUpstreamDetach?: (messageId: string) => void,
   onMessageUpstreamDelete?: (generator: DMessageGenerator, messageId: string) => Promise<void>,
+  upstreamResumeMode?: AixReattachMode, // set by parent while a resume is in flight on this message
   onMessageDelete?: (messageId: string) => void,
   onMessageFragmentAppend?: (messageId: DMessageId, fragment: DMessageFragment) => void
   onMessageFragmentDelete?: (messageId: DMessageId, fragmentId: DMessageFragmentId) => void,
@@ -248,7 +250,7 @@ export function ChatMessage(props: {
   // const wordsDiff = useWordsDifference(textSubject, props.diffPreviousText, showDiff);
 
 
-  const { onMessageAssistantFrom, onMessageDelete, onMessageFragmentAppend, onMessageFragmentDelete, onMessageFragmentReplace, onMessageContinue, onMessageUpstreamResume, onMessageUpstreamDelete } = props;
+  const { onMessageAssistantFrom, onMessageDelete, onMessageFragmentAppend, onMessageFragmentDelete, onMessageFragmentReplace, onMessageContinue, onMessageUpstreamResume, onMessageUpstreamDetach, onMessageUpstreamDelete } = props;
 
   const handleFragmentNew = React.useCallback(() => {
     onMessageFragmentAppend?.(messageId, createTextContentFragment(''));
@@ -270,6 +272,10 @@ export function ChatMessage(props: {
     if (!messageGenerator) return;
     return onMessageUpstreamResume?.(messageGenerator, messageId, mode);
   }, [messageGenerator, messageId, onMessageUpstreamResume]);
+
+  const handleUpstreamDetach = React.useCallback(() => {
+    onMessageUpstreamDetach?.(messageId);
+  }, [messageId, onMessageUpstreamDetach]);
 
   const handleUpstreamDelete = React.useCallback(() => {
     if (!messageGenerator) return;
@@ -904,7 +910,9 @@ export function ChatMessage(props: {
             <BlockOpUpstreamResume
               upstreamHandle={messageGenerator.upstreamHandle}
               pending={messagePendingIncomplete}
-              onResume={(!messagePendingIncomplete && onMessageUpstreamResume) ? handleUpstreamResume : undefined}
+              inFlightMode={props.upstreamResumeMode}
+              onResume={onMessageUpstreamResume ? handleUpstreamResume : undefined}
+              onDetach={onMessageUpstreamDetach ? handleUpstreamDetach : undefined}
               onDelete={onMessageUpstreamDelete ? handleUpstreamDelete : undefined}
             />
           )}
